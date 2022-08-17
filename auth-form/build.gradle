@@ -59,9 +59,9 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.github.highoutput'
+                groupId = 'com.github.mendelordanza'
                 artifactId = 'auth-form'
-                version = '0.0.1'
+                version = '0.0.3'
             }
         }
     }
