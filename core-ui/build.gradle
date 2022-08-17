@@ -58,8 +58,8 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.mendelordanza'
-                artifactId = 'mobile-coreui'
-                version = '0.0.1'
+                artifactId = 'core-ui'
+                version = '0.0.2'
             }
         }
     }
