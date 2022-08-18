@@ -46,9 +46,6 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
-
-    //Compose Mentions
-    implementation "com.github.mendelordanza:ComposeMentions:0.0.23"
 }
 
 afterEvaluate {
