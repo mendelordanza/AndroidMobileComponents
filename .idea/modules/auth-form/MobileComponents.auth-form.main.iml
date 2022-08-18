@@ -15,6 +15,7 @@
             <stringArg name="classpath">
               <args>
                 <arg>$MODULE_DIR$/../../../auth-form/build/intermediates/compile_r_class_jar/debug/R.jar</arg>
+                <arg>$MODULE_DIR$/../../../core-ui/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/486ba113cbbd3df36f668988ae931c17/transformed/constraintlayout-compose-1.0.0-beta02-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/80ce48cee6c1ad5645b6843231d84c50/transformed/ui-tooling-1.0.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/43001dbd6bac6c0330dc73ddf1a9ece6/transformed/material-1.0.1-api.jar</arg>

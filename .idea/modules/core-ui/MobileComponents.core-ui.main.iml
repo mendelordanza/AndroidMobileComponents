@@ -16,7 +16,6 @@
               <args>
                 <arg>$MODULE_DIR$/../../../core-ui/build/intermediates/compile_r_class_jar/debug/R.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/486ba113cbbd3df36f668988ae931c17/transformed/constraintlayout-compose-1.0.0-beta02-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/8ebed691ef745808ff77ea3039ae27a3/transformed/ComposeMentions-0.0.23-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/43001dbd6bac6c0330dc73ddf1a9ece6/transformed/material-1.0.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/01b956c66653bcf4fa237089710ee75d/transformed/material-ripple-1.0.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/5e578c3fe881f48d1986d73e4652ecf7/transformed/foundation-1.0.1-api.jar</arg>
@@ -108,7 +107,6 @@
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.5.21" level="project" />
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.2.0" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.mendelordanza:ComposeMentions:0.0.23@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.compose.material:material:1.0.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.compose.material:material-ripple:1.0.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.compose.foundation:foundation:1.0.1@aar" level="project" />
