@@ -36,7 +36,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion compiler_extension_version
     }
     packagingOptions {
         resources {
@@ -48,6 +48,10 @@ android {
 dependencies {
     implementation project(':auth-form')
     implementation project(':core-ui')
+
+    implementation "com.github.mendelordanza:ComposeMentions:0.0.23"
+
+    //implementation 'com.github.mendelordanza:AndroidMobileComponents:0.0.14'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "androidx.compose.ui:ui:$compose_version"

@@ -18,6 +18,9 @@ fun AuthForm(
     modifier: Modifier = Modifier,
     emailPlaceholder: String = "Email",
     passwordPlaceholder: String = "Password",
+    emailError: String = "",
+    passError: String = "",
+    isError: Boolean = false,
     onLoginClick: (String, String) -> Unit,
     onSignUpClick: () -> Unit,
 ) {
@@ -27,11 +30,8 @@ fun AuthForm(
     var password by remember {
         mutableStateOf("")
     }
-    val emailErrorMessage by remember {
-        mutableStateOf("")
-    }
-    val passErrorMessage by remember {
-        mutableStateOf("")
+    var isPasswordVisible by remember {
+        mutableStateOf(false)
     }
 
     Column(
@@ -49,8 +49,8 @@ fun AuthForm(
                 placeholder = {
                     Text(emailPlaceholder, color = Color.LightGray)
                 },
-                isError = email.isEmpty(),
-                errorMessage = emailErrorMessage,
+                isError = isError,
+                errorMessage = emailError,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             )
             Spacer(Modifier.height(10.dp))
@@ -62,9 +62,12 @@ fun AuthForm(
                 placeholder = {
                     Text(passwordPlaceholder, color = Color.LightGray)
                 },
-                isPassword = true,
-                isError = password.isEmpty(),
-                errorMessage = passErrorMessage,
+                isPasswordVisible = isPasswordVisible,
+                isPasswordToggle = {
+                    isPasswordVisible = !isPasswordVisible
+                },
+                isError = isError,
+                errorMessage = passError,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             )
         }

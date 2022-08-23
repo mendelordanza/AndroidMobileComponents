@@ -6,8 +6,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,7 +43,8 @@ fun CustomTextbox(
     backgroundColor: Color = MaterialTheme.colors.background,
     defaultBorderColor: Color = Color.LightGray,
     shape: Shape = RoundedCornerShape(8.dp),
-    isPassword: Boolean = false,
+    isPasswordVisible: Boolean = false,
+    isPasswordToggle: (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
@@ -102,13 +109,20 @@ fun CustomTextbox(
                                 modifier = Modifier
                                     .padding(end = 16.dp)
                             ) {
-                                trailingIcon()
+                                if (isPasswordToggle != null) {
+                                    IconButton(onClick = isPasswordToggle) {
+                                        if (isPasswordVisible) Icons.Filled.Visibility
+                                        else Icons.Filled.VisibilityOff
+                                    }
+                                } else {
+                                    trailingIcon()
+                                }
                             }
                         }
                     }
                 }
             },
-            visualTransformation = if (isPassword) PasswordVisualTransformation() else visualTransformation,
+            visualTransformation = if (isPasswordToggle != null) PasswordVisualTransformation() else visualTransformation,
         )
         if (isError && errorMessage.isNotEmpty()) {
             Text(errorMessage, color = errorColor)
