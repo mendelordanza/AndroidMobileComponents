@@ -1,5 +1,6 @@
 package com.highoutput.mobilecomponents.authform
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -10,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.highoutput.mobilecomponents.authform.extensions.isValidEmail
 import com.highoutput.mobilecomponents.coreui.CustomTextbox
 import com.highoutput.mobilecomponents.coreui.SingleTapButton
 
@@ -18,9 +20,6 @@ fun AuthForm(
     modifier: Modifier = Modifier,
     emailPlaceholder: String = "Email",
     passwordPlaceholder: String = "Password",
-    emailError: String = "",
-    passError: String = "",
-    isError: Boolean = false,
     onLoginClick: (String, String) -> Unit,
     onSignUpClick: () -> Unit,
 ) {
@@ -32,6 +31,15 @@ fun AuthForm(
     }
     var isPasswordVisible by remember {
         mutableStateOf(false)
+    }
+    var error by remember {
+        mutableStateOf(false)
+    }
+    var emailErrorMessage by remember {
+        mutableStateOf("")
+    }
+    var passErrorMessage by remember {
+        mutableStateOf("")
     }
 
     Column(
@@ -49,8 +57,8 @@ fun AuthForm(
                 placeholder = {
                     Text(emailPlaceholder, color = Color.LightGray)
                 },
-                isError = isError,
-                errorMessage = emailError,
+                isError = error,
+                errorMessage = emailErrorMessage,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             )
             Spacer(Modifier.height(10.dp))
@@ -66,15 +74,36 @@ fun AuthForm(
                 isPasswordToggle = {
                     isPasswordVisible = !isPasswordVisible
                 },
-                isError = isError,
-                errorMessage = passError,
+                isError = error,
+                errorMessage = passErrorMessage,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             )
         }
         SingleTapButton(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                onLoginClick(email, password)
+                if (email.isEmpty()) {
+                    error = true
+                    emailErrorMessage = "Email is required"
+                } else if (!email.isValidEmail()) {
+                    error = true
+                    emailErrorMessage = "Invalid email"
+                } else {
+                    error = false
+                    emailErrorMessage = ""
+                }
+
+                if (password.isEmpty()) {
+                    error = true
+                    passErrorMessage = "Password is required"
+                } else {
+                    error = false
+                    passErrorMessage = ""
+                }
+
+                if(!error){
+                    onLoginClick(email, password)
+                }
             },
         ) {
             Text("Login")

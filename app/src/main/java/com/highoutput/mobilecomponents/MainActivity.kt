@@ -36,59 +36,28 @@ class MainActivity : ComponentActivity() {
             MobileComponentsTheme(
                 darkTheme = false
             ) {
-//                var isError by remember {
-//                    mutableStateOf(false)
-//                }
-//                var emailErrorMessage by remember {
-//                    mutableStateOf("")
-//                }
-//                var passErrorMessage by remember {
-//                    mutableStateOf("")
-//                }
-//
-//                AuthForm(
-//                    modifier = Modifier.padding(24.dp),
-//                    emailPlaceholder = "Enter email",
-//                    passwordPlaceholder = "Enter password",
-//                    isError = isError,
-//                    emailError = emailErrorMessage,
-//                    passError = passErrorMessage,
-//                    onLoginClick = { email, password ->
-//                        if (email.isEmpty()) {
-//                            isError = true
-//                            emailErrorMessage = "Email is required"
-//                        } else {
-//                            isError = false
-//                            emailErrorMessage = ""
-//                        }
-//
-//                        if (password.isEmpty()) {
-//                            isError = true
-//                            passErrorMessage = "Password is required"
-//                        } else {
-//                            isError = false
-//                            passErrorMessage = ""
-//                        }
-//
-//                        if(!isError) {
-//                            Log.d("SUBMIT", "$email $password")
-//                        }
-//                    },
-//                    onSignUpClick = {
-//                        Log.d("SIGN UP", "CLICK")
-//                    }
-//                )
+                AuthForm(
+                    modifier = Modifier.padding(24.dp),
+                    emailPlaceholder = "Enter email",
+                    passwordPlaceholder = "Enter password",
+                    onLoginClick = { email, password ->
+                        Log.d("SUBMIT", "$email $password")
+                    },
+                    onSignUpClick = {
+                        Log.d("SIGN UP", "CLICK")
+                    }
+                )
 
                 //OTP Form
-                OtpForm(
-                    email = "sample@email.com",
-                    onSubmit = {
-                        Log.d("SUBMIT", it)
-                    },
-                    resendCode = {
-                        //TODO resend
-                    },
-                )
+//                OtpForm(
+//                    email = "sample@email.com",
+//                    onSubmit = {
+//                        Log.d("SUBMIT", it)
+//                    },
+//                    resendCode = {
+//                        //TODO resend
+//                    },
+//                )
 
 //                val list = remember {
 //                    mutableStateListOf<String>()

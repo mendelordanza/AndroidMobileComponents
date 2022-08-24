@@ -2,6 +2,7 @@ package com.highoutput.mobilecomponents.coreui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -104,25 +105,29 @@ fun CustomTextbox(
                             }
                             innerTextField()
                         }
-                        if (trailingIcon != null) {
-                            Box(
-                                modifier = Modifier
-                                    .padding(end = 16.dp)
-                            ) {
-                                if (isPasswordToggle != null) {
-                                    IconButton(onClick = isPasswordToggle) {
-                                        if (isPasswordVisible) Icons.Filled.Visibility
-                                        else Icons.Filled.VisibilityOff
-                                    }
-                                } else {
-                                    trailingIcon()
-                                }
+                        Box(
+                            modifier = Modifier
+                                .padding(end = 16.dp)
+                        ) {
+                            if (isPasswordToggle != null) {
+                                Icon(
+                                    modifier = Modifier.clickable {
+                                        isPasswordToggle()
+                                    },
+                                    imageVector = if (isPasswordVisible) Icons.Filled.Visibility else
+                                        Icons.Filled.VisibilityOff,
+                                    contentDescription = "",
+                                )
+                            } else if (trailingIcon != null) {
+                                trailingIcon()
                             }
                         }
                     }
                 }
             },
-            visualTransformation = if (isPasswordToggle != null) PasswordVisualTransformation() else visualTransformation,
+            visualTransformation = if (isPasswordToggle != null && !isPasswordVisible)
+                PasswordVisualTransformation()
+            else visualTransformation,
         )
         if (isError && errorMessage.isNotEmpty()) {
             Text(errorMessage, color = errorColor)
