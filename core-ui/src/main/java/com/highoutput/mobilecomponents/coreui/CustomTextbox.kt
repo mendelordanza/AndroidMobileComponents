@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun CustomTextbox(
     modifier: Modifier = Modifier,
+    label: String? = null,
     value: String,
     onValueChange: (String) -> Unit,
     visualTransformation: VisualTransformation = VisualTransformation.None,
@@ -56,6 +57,9 @@ fun CustomTextbox(
     }
 
     Column {
+        if (label != null) {
+            Text(modifier = Modifier.padding(bottom = 6.dp), text = label)
+        }
         BasicTextField(
             modifier = modifier
                 .fillMaxWidth()

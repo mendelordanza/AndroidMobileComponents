@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun OtpForm(
+    modifier: Modifier = Modifier,
     email: String,
     borderColor: Color = MaterialTheme.colors.primary,
     pinLength: Int = 6,
@@ -57,26 +58,24 @@ fun OtpForm(
         },
         content = {
             Column(
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = modifier.padding(24.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 24.dp, vertical = 16.dp),
+                        .weight(1f),
                     verticalArrangement = Arrangement.spacedBy(5.dp)
                 ) {
                     Text(
-                        "Check your email",
-                        style = MaterialTheme.typography.h6,
+                        "Check your inbox",
+                        style = MaterialTheme.typography.h5,
                     )
 
                     Text(
                         modifier = Modifier
                             .padding(top = 12.dp),
-                        text = "We have sent a $pinLength-digit code to $email. Please enter it below. Can’t "
-                                + "find it? Check your spam folder.",
+                        text = "We have sent a $pinLength-digit code to your email",
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Normal,
@@ -141,29 +140,20 @@ fun OtpForm(
                         )
                     }
                 }
-                Column(
+                SingleTapButton(
                     modifier = Modifier
-                        .navigationBarsPadding()
-                        .imePadding()
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    SingleTapButton(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                            .semantics {
-                                contentDescription = "login_with_code"
-                            },
-                        onClick = {
-                            if (code.isNotEmpty()) {
-                                onSubmit(code)
-                            }
+                        .fillMaxWidth()
+                        .semantics {
+                            contentDescription = "login_with_code"
                         },
-                        enabled = code.length == 6
-                    ) {
-                        Text("Continue")
-                    }
+                    onClick = {
+                        if (code.isNotEmpty()) {
+                            onSubmit(code)
+                        }
+                    },
+                    enabled = code.length == 6
+                ) {
+                    Text("Continue")
                 }
             }
         }

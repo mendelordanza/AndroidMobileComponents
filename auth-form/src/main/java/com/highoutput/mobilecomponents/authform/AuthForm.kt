@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,8 +19,8 @@ import com.highoutput.mobilecomponents.coreui.SingleTapButton
 @Composable
 fun AuthForm(
     modifier: Modifier = Modifier,
-    emailPlaceholder: String = "Email",
-    passwordPlaceholder: String = "Password",
+    emailPlaceholder: String = "Input your email",
+    passwordPlaceholder: String = "Input your password",
     onLoginClick: (String, String) -> Unit,
     onSignUpClick: () -> Unit,
 ) {
@@ -43,13 +44,15 @@ fun AuthForm(
     }
 
     Column(
-        modifier,
+        modifier.padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        Text("Login", style = MaterialTheme.typography.h5)
         Column(
             modifier = Modifier.weight(1f)
         ) {
             CustomTextbox(
+                label = "Email",
                 value = email,
                 onValueChange = {
                     email = it
@@ -63,6 +66,7 @@ fun AuthForm(
             )
             Spacer(Modifier.height(10.dp))
             CustomTextbox(
+                label = "Password",
                 value = password,
                 onValueChange = {
                     password = it
@@ -101,7 +105,7 @@ fun AuthForm(
                     passErrorMessage = ""
                 }
 
-                if(!error){
+                if (!error) {
                     onLoginClick(email, password)
                 }
             },

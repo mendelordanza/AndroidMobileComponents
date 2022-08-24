@@ -36,17 +36,17 @@ class MainActivity : ComponentActivity() {
             MobileComponentsTheme(
                 darkTheme = false
             ) {
-                AuthForm(
-                    modifier = Modifier.padding(24.dp),
-                    emailPlaceholder = "Enter email",
-                    passwordPlaceholder = "Enter password",
-                    onLoginClick = { email, password ->
-                        Log.d("SUBMIT", "$email $password")
-                    },
-                    onSignUpClick = {
-                        Log.d("SIGN UP", "CLICK")
-                    }
-                )
+//                AuthForm(
+//
+//                    emailPlaceholder = "Enter email",
+//                    passwordPlaceholder = "Enter password",
+//                    onLoginClick = { email, password ->
+//                        Log.d("SUBMIT", "$email $password")
+//                    },
+//                    onSignUpClick = {
+//                        Log.d("SIGN UP", "CLICK")
+//                    }
+//                )
 
                 //OTP Form
 //                OtpForm(
@@ -98,29 +98,29 @@ class MainActivity : ComponentActivity() {
 //                }
 
 
-//                var text by remember {
-//                    mutableStateOf("")
-//                }
-//                var isExpanded by remember {
-//                    mutableStateOf(false)
-//                }
-//                DropdownField(
-//                    text = text,
-//                    onTextChanged = {
-//                        text = it
-//                    },
-//                    isExpanded = isExpanded,
-//                    onOpenClose = {
-//                        isExpanded = !isExpanded
-//                    },
-//                    listItem = {
-//                        repeat(10) {
-//                            item {
-//                                Text("Sample $it")
-//                            }
-//                        }
-//                    },
-//                )
+                var text by remember {
+                    mutableStateOf("")
+                }
+                var isExpanded by remember {
+                    mutableStateOf(false)
+                }
+                DropdownField(
+                    text = text,
+                    onTextChanged = {
+                        text = it
+                    },
+                    isExpanded = isExpanded,
+                    onOpenClose = {
+                        isExpanded = !isExpanded
+                    },
+                    listItem = {
+                        repeat(10) {
+                            item {
+                                Text("Sample $it")
+                            }
+                        }
+                    },
+                )
 
                 //Compose Mentions
 //                val members = listOf(
